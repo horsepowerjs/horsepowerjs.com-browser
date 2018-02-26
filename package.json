@@ -6,11 +6,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Ryan Naddy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/horsepowerjs/horsepowerjs.com.git"
+  },
   "license": "ISC",
   "dependencies": {
     "compression": "^1.7.2",
     "express": "^4.16.2",
-    "pug": "^2.0.0-rc.4"
+    "node-sass-middleware": "^0.11.0",
+    "pug": "^2.0.0-rc.4",
+    "ts-middleware": "^1.0.2"
+  },
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "uglify-es": "^3.3.9"
   }
 }

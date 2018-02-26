@@ -1,0 +1,30 @@
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title Horsepower
+    script(src='https://use.fontawesome.com/releases/v5.0.6/js/all.js')
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css")
+    link(rel="stylesheet", href="/css/main.css")
+    script(src="//localhost:3030/horsepower/hp.min.js")
+    script(src="/js/main.js")
+  body
+    nav.navbar(role="navigation" aria-label="main navigation")
+      .container
+        .navbar-brand
+          a(href="/"): img(src="/images/logo2.svg", alt="Horsepower Logo")
+          .navbar-burger
+            span
+            span
+            span
+        .navbar-menu
+          a.navbar-item(href='/getting-started') Getting Started
+          a.navbar-item Documentation
+          a.navbar-item Components
+          a.navbar-item Examples
+    block content
+    footer
+      .container
+        .section
+          h1.is-size-1 Footer

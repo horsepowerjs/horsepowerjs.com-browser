@@ -1,0 +1,24 @@
+extends /main
+
+block content
+  section.section.is-medium.section-block.blue-header
+    .container
+      h1.title.white-text.is-size-1 Installation
+      ul.tabs.getting-started
+        li.active(data-target="#getting-started-cdn")
+          h1.title CDN
+          p Use a CDN to speed up the loading time of your application.
+        li(data-target="#getting-started-npm")
+          h1.title NPM
+          p Host the JavaScript on your own server.
+      .getting-started-spacer
+      .getting-started-items
+        .item.section.white-text#getting-started-cdn
+          h1.title.white-text #[a.copy(data-target='#copy-cdn') #[i.fas.fa-clipboard]] CDN
+          p: pre#copy-cdn= '<script src="https://cdn.horsepowerjs.com/1.0.0/hp.min.js"></script>'
+        .item.section.white-text.hidden#getting-started-npm
+          h1.title.white-text #[a.copy(data-target='#copy-npm') #[i.fas.fa-clipboard]] NPM
+          p: pre#copy-npm= 'npm install horsepower --save'
+  section.section.section-block
+    .container
+      h1.is-size-1 Usage

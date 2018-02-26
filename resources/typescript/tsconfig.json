@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "system",
+    "outFile": "../../public/js/main.js"
+  },
+  "include": [
+    "../../../horsepower/lib/hp.d.ts",
+    "./**/*.ts"
+  ]
+}
