@@ -7,6 +7,7 @@ html
     //- Include the JavaScript libraries
     script(src="https://cdn.horsepowerjs.com/latest/hp.min.js")
     script(src='/js/fontawesome-all.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js')
     script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
     script.
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -17,6 +18,7 @@ html
     //- link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css")
     link(rel="stylesheet", href="/css/pure.css")
     link(rel="stylesheet", href="/css/main.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism.min.css")
     //- Include the website JavaScript
     script(src="/js/main.js")
   if path == '/'
@@ -39,6 +41,5 @@ html
   main
     block content
   footer
-    .container
-      .section
+    .pure-container.pure-padding--5rem
         h1.is-size-1 Footer

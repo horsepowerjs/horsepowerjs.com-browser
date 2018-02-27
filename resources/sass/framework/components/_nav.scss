@@ -1,0 +1,32 @@
+.pure-nav {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    & > li {
+      & > a {
+        &:hover {
+          background-color: $light-gray;
+        }
+        display: block;
+        padding: 0.5rem;
+      }
+
+      ul > li {
+        font-size: 0.9em;
+
+        & > a {
+          padding: 0.2em;
+          padding-left: 2em;
+        }
+
+        ul > li {
+          & > a {
+            padding-left: 4em;
+          }
+        }
+      }
+    }
+  }
+}

@@ -36,6 +36,7 @@ app.get('/', (req, res) => {
 
 app.get('/getting-started', (req, res) => res.render('pages/getting-started'))
 app.get('/docs', (req, res) => res.render('pages/docs'))
+// app.get('/docs/nav', (req, res) => res.render('pages/docs'))
 
 // app.get(/\/docs\/.+?/, (req, res) => {
 //   res.render('pages/index')

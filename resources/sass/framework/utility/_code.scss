@@ -4,4 +4,22 @@ pre {
   padding: 1rem;
   font-family: monospace;
   box-shadow: $box-shadow;
+
+  code {
+    font-family: monospace;
+    border: initial;
+    background-color: initial;
+    color: initial;
+    padding: initial;
+    font-size: initial;
+  }
+}
+
+code {
+  font-family: monospace;
+  border: solid 1px $secondary-color;
+  background-color: lighten($secondary-color, 42%);
+  color: $secondary-color;
+  padding: 2px 4px;
+  font-size: 0.8em;
 }

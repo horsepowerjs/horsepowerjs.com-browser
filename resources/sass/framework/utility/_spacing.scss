@@ -1,0 +1,164 @@
+$i: 0;
+
+@while ($i <= 200) {
+  .pure-margin--#{$i}px {
+    margin: $i * 1px;
+  }
+
+  .pure-margin-bottom--#{$i}px {
+    margin-bottom: $i * 1px;
+  }
+
+  .pure-margin-top--#{$i}px {
+    margin-top: $i * 1px;
+  }
+
+  .pure-margin-left--#{$i}px {
+    margin-left: $i * 1px;
+  }
+
+  .pure-margin-right--#{$i}px {
+    margin-right: $i * 1px;
+  }
+
+  .pure-margin--#{$i}percent {
+    margin: $i * 1%;
+  }
+
+  .pure-margin-bottom--#{$i}percent {
+    margin-bottom: $i * 1%;
+  }
+
+  .pure-margin-top--#{$i}percent {
+    margin-top: $i * 1%;
+  }
+
+  .pure-margin-left--#{$i}percent {
+    margin-left: $i * 1%;
+  }
+
+  .pure-margin-right--#{$i}percent {
+    margin-right: $i * 1%;
+  }
+
+  .pure-margin--#{$i}rem {
+    margin: $i * 1rem;
+  }
+
+  .pure-margin-bottom--#{$i}rem {
+    margin-bottom: $i * 1rem;
+  }
+
+  .pure-margin-top--#{$i}rem {
+    margin-top: $i * 1rem;
+  }
+
+  .pure-margin-left--#{$i}rem {
+    margin-left: $i * 1rem;
+  }
+
+  .pure-margin-right--#{$i}rem {
+    margin-right: $i * 1rem;
+  }
+
+  .pure-margin--#{$i}em {
+    margin: $i * 1em;
+  }
+
+  .pure-margin-bottom--#{$i}em {
+    margin-bottom: $i * 1em;
+  }
+
+  .pure-margin-top--#{$i}em {
+    margin-top: $i * 1em;
+  }
+
+  .pure-margin-left--#{$i}em {
+    margin-left: $i * 1em;
+  }
+
+  .pure-margin-right--#{$i}em {
+    margin-right: $i * 1em;
+  }
+
+  .pure-padding--#{$i}px {
+    padding: $i * 1px;
+  }
+
+  .pure-padding-bottom--#{$i}px {
+    padding-bottom: $i * 1px;
+  }
+
+  .pure-padding-top--#{$i}px {
+    padding-top: $i * 1px;
+  }
+
+  .pure-padding-left--#{$i}px {
+    padding-left: $i * 1px;
+  }
+
+  .pure-padding-right--#{$i}px {
+    padding-right: $i * 1px;
+  }
+
+  .pure-padding--#{$i}percent {
+    padding: $i * 1%;
+  }
+
+  .pure-padding-bottom--#{$i}percent {
+    padding-bottom: $i * 1%;
+  }
+
+  .pure-padding-top--#{$i}percent {
+    padding-top: $i * 1%;
+  }
+
+  .pure-padding-left--#{$i}percent {
+    padding-left: $i * 1%;
+  }
+
+  .pure-padding-right--#{$i}percent {
+    padding-right: $i * 1%;
+  }
+
+  .pure-padding--#{$i}em {
+    padding: $i * 1em;
+  }
+
+  .pure-padding-bottom--#{$i}em {
+    padding-bottom: $i * 1em;
+  }
+
+  .pure-padding-top--#{$i}em {
+    padding-top: $i * 1em;
+  }
+
+  .pure-padding-left--#{$i}em {
+    padding-left: $i * 1em;
+  }
+
+  .pure-padding-right--#{$i}em {
+    padding-right: $i * 1em;
+  }
+
+  .pure-padding--#{$i}rem {
+    padding: $i * 1rem;
+  }
+
+  .pure-padding-bottom--#{$i}rem {
+    padding-bottom: $i * 1rem;
+  }
+
+  .pure-padding-top--#{$i}rem {
+    padding-top: $i * 1rem;
+  }
+
+  .pure-padding-left--#{$i}rem {
+    padding-left: $i * 1rem;
+  }
+
+  .pure-padding-right--#{$i}rem {
+    padding-right: $i * 1rem;
+  }
+  $i: $i + 5;
+}

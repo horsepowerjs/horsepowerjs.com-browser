@@ -1,7 +1,7 @@
 extends /main
 
 block content
-  section.pure-section.pure-padding--5_rem
+  section.pure-section.pure-padding--5rem
     .pure-container.pure-container--vertical
       h1.white-text Installation
       ul.pure-tabs.getting-started
@@ -13,10 +13,10 @@ block content
           p Host the JavaScript on your own server.
       .getting-started-spacer
       .getting-started-items
-        .item.white-text.pure-padding--5_rem#getting-started-cdn
+        .item.white-text.pure-padding--5rem#getting-started-cdn
           h2.title.white-text #[a.copy.white-text(data-target='#copy-cdn' data-tooltip='Copy code') #[i.fas.fa-clipboard]] CDN
           pre#copy-cdn= '<script src="https://cdn.horsepowerjs.com/latest/hp.min.js"></script>'
-        .item.white-text.hidden.pure-padding--5_rem#getting-started-npm
+        .item.white-text.hidden.pure-padding--5rem#getting-started-npm
           h2.title.white-text #[a.copy.white-text(data-target='#copy-npm' data-tooltip='Copy code') #[i.fas.fa-clipboard]] NPM
           pre#copy-npm= 'npm install horsepower --save'
   section.pure-section.white
