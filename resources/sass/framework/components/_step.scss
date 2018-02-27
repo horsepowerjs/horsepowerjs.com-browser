@@ -1,0 +1,96 @@
+ul.pure-step {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: stretch;
+  width: 100%;
+  flex-wrap: nowrap;
+  padding: 0;
+  margin: 0;
+  margin-top: 1.3rem;
+
+  @media screen and (max-width: $breakpoint-phone) {
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  & > li.pure-step--active {
+    & ~ li {
+      // Drw the incomplted step line
+      &:before {
+        background: $dark-gray;
+      }
+
+      // Draw the incompleted step dot
+      & a:before {
+        background: $dark-gray;
+      }
+    }
+
+    & a {
+      // Draw The current step dot
+      &:before {
+        background: #ffffff;
+        border: solid .1rem $secondary-color;
+      }
+    }
+  }
+
+  & > li {
+    flex: 1;
+    text-align: center;
+    position: relative;
+
+    @media screen and (max-width: $breakpoint-phone) {
+      text-align: left;
+      padding-left: 0;
+      line-height: 2rem;
+    }
+
+    // Draw the default step line
+    &:not(:first-child):before {
+      background: $secondary-color;
+      content: '';
+      height: 0.3rem;
+      left: -50%;
+      position: absolute;
+      top: -1.02rem;
+      width: 100%;
+
+      @media screen and (max-width: $breakpoint-phone) {
+        height: 100%;
+        width: 0.3rem;
+        left: -0.1rem;
+      }
+    }
+
+    & > a {
+      color: $dark-gray;
+
+      @media screen and (max-width: $breakpoint-phone) {
+        padding-left: 1rem;
+      }
+
+      // Draw the completed step dot
+      &:before {
+        background: $secondary-color;
+        border: .1rem solid #fff;
+        border-radius: 50%;
+        content: '';
+        display: block;
+        height: .6rem;
+        left: 50%;
+        position: absolute;
+        top: -1.3rem;
+        transform: translateX(-50%);
+        width: .6rem;
+        z-index: 1;
+
+        @media screen and (max-width: $breakpoint-phone) {
+          top: 0.1rem;
+          left: 0;
+        }
+      }
+    }
+  }
+}

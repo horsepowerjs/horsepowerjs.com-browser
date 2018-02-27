@@ -6,28 +6,39 @@ html
     title Horsepower
     //- Include the JavaScript libraries
     script(src="https://cdn.horsepowerjs.com/latest/hp.min.js")
-    script(src='https://use.fontawesome.com/releases/v5.0.6/js/all.js')
+    script(src='/js/fontawesome-all.min.js')
+    script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+    script.
+      (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-2834242581482228",
+            enable_page_level_ads: true
+      });
     //- Include the css
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css")
+    //- link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css")
+    link(rel="stylesheet", href="/css/pure.css")
     link(rel="stylesheet", href="/css/main.css")
     //- Include the website JavaScript
     script(src="/js/main.js")
-  body
-    nav.navbar(role="navigation" aria-label="main navigation")
-      .container
-        .navbar-brand
+  if path == '/'
+    body.white
+  else
+    body.blue-header
+
+  header
+    nav.pure-container
+      .pure-navbar
+        .pure-navbar--brand
           a(href="/"): img(src="/images/logo2.svg", alt="Horsepower Logo")
-          .navbar-burger
-            span
-            span
-            span
-        .navbar-menu
-          a.navbar-item(href='/getting-started') Getting Started
-          a.navbar-item Documentation
-          a.navbar-item Components
-          a.navbar-item Examples
+        .pure-navbar--menu
+          a.pure-navbar--item(href='/getting-started') Getting Started
+          a.pure-navbar--item(href='/docs') Documentation
+          a.pure-navbar--item Components
+          a.pure-navbar--item Examples
+        .pure-navbar--burger
+          a: i.fal.fa-bars
+  main
     block content
-    footer
-      .container
-        .section
-          h1.is-size-1 Footer
+  footer
+    .container
+      .section
+        h1.is-size-1 Footer

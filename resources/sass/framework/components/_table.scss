@@ -1,0 +1,43 @@
+table.pure-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+
+  &.pure-table--striped {
+    & > tbody > tr:nth-child(odd) {
+      background-color: rgba(0, 0, 0, 0.025);
+    }
+
+    & > tbody > tr.pure-table--row-selected {
+      background-color: $primary-color;
+      color: #ffffff;
+    }
+  }
+
+  & > thead > tr > th {
+    padding: 0.5rem 0.8rem;
+    text-align: left;
+  }
+
+  & > tbody > tr {
+    border-top: solid 1px $light-gray;
+
+    &.pure-table--row-selected {
+      background-color: $primary-color;
+      color: #ffffff;
+    }
+
+    & > td {
+      padding: 0.5rem 0.8rem;
+      text-align: left;
+    }
+  }
+
+  &.pure-table--responsive {
+    @media screen and (max-width: $breakpoint-tablet - 1) {
+      overflow-x: auto;
+      display: block;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+$i: 0;
+
+@while $i < 200 {
+  // @for $i from 1 through 100 {
+  .pure-padding--#{$i} {
+    padding: 0px + $i;
+  }
+
+  .pure-padding--#{$i}_rem {
+    padding: 0rem + $i;
+  }
+
+  .pure-padding--#{$i}_em {
+    padding: 0rem + $i;
+  }
+  $i: $i+5;
+}

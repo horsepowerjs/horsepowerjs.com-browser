@@ -1,10 +1,8 @@
 class navburger extends hp.element {
   clicked() {
-    this.toggleClass('is-active')
-    this.closestElement('.navbar', item => {
-      item.findElement('.navbar-menu', item => item.toggleClass('is-active'))
-    })
+    this.siblingElement('.pure-navbar--menu', item =>
+      item.enableClass(!item.hasClass('pure-navbar--menu_is-active'), 'pure-navbar--menu_is-active'))
   }
 }
 
-hp.observe('.navbar-burger', navburger)
+hp.observe('.pure-navbar--burger', navburger)

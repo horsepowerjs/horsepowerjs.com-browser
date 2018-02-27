@@ -1,0 +1,120 @@
+[type=text],
+[type=password],
+[type=email],
+[type=number],
+[type=date],
+textarea {
+  border: 0;
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: #000000;
+  background: #ffffff;
+  outline: none;
+  letter-spacing: $core-letter-spacing;
+
+  &:disabled {
+    background: $light-gray;
+    color: $dark-gray;
+    cursor: not-allowed;
+  }
+
+  &:focus:required:invalid {
+    background: #f4d0d6;
+  }
+
+  &:-webkit-autofill {
+    background-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    box-shadow: 0 0 0 30px white inset !important;
+  }
+
+  &.lg {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+}
+
+textarea {
+  resize: vertical;
+  font-size: 0.7rem;
+  letter-spacing: $core-letter-spacing;
+
+  &.no-resize {
+    resize: none;
+  }
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+
+  & > label {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 5px;
+    font-size: 1rem;
+  }
+
+  select {
+    display: none;
+  }
+
+  & > ul.input-select {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.2rem;
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+    background: white;
+    z-index: 200;
+
+    &.open > li {
+      display: initial;
+    }
+
+    &:not(.open) > li {
+      display: none;
+    }
+
+    & > li:first-child {
+      display: initial !important;
+    }
+
+    &.open > li:not(:first-child) a:hover {
+      background-color: $light-gray;
+    }
+
+    & > li:first-child > i {
+      position: absolute;
+      right: 5px;
+      top: 0.6rem;
+      height: 1.5rem;
+      margin: auto;
+      font-size: 1.5rem;
+      pointer-events: none;
+    }
+
+    & > li.selected {
+      display: initial;
+    }
+
+    & > li > a {
+      padding: 0.8rem;
+      font-size: 1rem;
+      display: inline-block;
+      width: 100%;
+      color: #000000;
+
+      &:hover {
+        color: #000000;
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+.pure-fluid-container {
+  display: flex;
+  width: 100vw;
+}
+
+.pure-container {
+  display: flex;
+  width: 65vw;
+  margin: auto;
+  flex-direction: row;
+  position: relative;
+
+  &.pure-container--vertical {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: $breakpoint-phone - 1) {
+    & {
+      width: 100vw;
+    }
+  }
+}
+
+.pure-card > .pure-row {
+  height: inherit;
+}
+
+.pure-row {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0 $grid-padding;
+  margin: 0 auto;
+  align-items: stretch;
+  width: 100%;
+
+  &.pure-row--no-wrap {
+    flex-wrap: nowrap;
+  }
+
+  &:first-child {
+    padding-top: $grid-padding;
+  }
+
+  &:last-child {
+    padding-bottom: $grid-padding;
+  }
+
+  &.pure-row--vertical_center {
+    align-items: center;
+  }
+
+  @media screen and (max-width: $breakpoint-tablet - 1) {
+    padding: 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+  & > .pure-col {
+    margin: $cell-margin;
+
+    @for $i from 1 through $grid-columns {
+      // Desktop
+      &.pure-col--#{$i} {
+        width: calc(#{$i / $grid-columns * 100%} - #{$cell-margin * 2});
+      }
+
+      &.pure-col--#{$i}-offset {
+        margin-left: $i / $grid-columns * 100%;
+      }
+    }
+
+    @for $i from 1 through $grid-columns {
+      // Phone
+      @media screen and (max-width: $breakpoint-phone - 1) {
+        &.pure-col--#{$i}-phone {
+          width: calc(#{$i / $grid-columns * 100%} - #{$cell-margin * 2});
+        }
+
+        &.pure-col--#{$i}-offset-phone {
+          margin-left: $i / $grid-columns * 100%;
+        }
+
+        @if $i == 1 {
+          &.pure-col--0-offset-phone {
+            margin-left: $cell-margin;
+          }
+        }
+      }
+
+      // Tablet
+      @media screen and (max-width: $breakpoint-tablet - 1) {
+        &.pure-col--#{$i}-tablet {
+          width: calc(#{$i / $grid-columns * 100%} - #{$cell-margin * 2});
+        }
+
+        &.pure-col--#{$i}-offset-tablet {
+          margin-left: $i / $grid-columns * 100%;
+        }
+
+        @if $i == 1 {
+          &.pure-col--0-offset-tablet {
+            margin-left: $cell-margin;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+.pure-card {
+  background: #ffffff;
+  min-height: 100px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 0 2px 2px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & > .pure-card--header {
+    background: $primary-color;
+    min-height: 150px;
+    display: flex;
+    align-items: flex-end;
+    padding: $card-padding;
+    color: #ffffff;
+    background-position: center center;
+    background-size: cover;
+
+    & > .pure-card--title {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      font-weight: 200;
+      font-size: 2rem;
+    }
+  }
+
+  & > .pure-card--content {
+    padding: $card-padding;
+  }
+
+  & > .pure-card--action {
+    padding: $card-padding;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-top: solid 1px $light-gray;
+
+    & > * {
+      margin-left: 8px;
+    }
+  }
+}

@@ -7,6 +7,10 @@ const path = require('path')
 const app = express()
 
 app.locals.basedir = path.join(__dirname, '../resources/views')
+app.use((req, res, next) => {
+  res.locals.path = req.path
+  next()
+})
 
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, '../resources/views'))
@@ -30,12 +34,11 @@ app.get('/', (req, res) => {
   res.render('pages/index')
 })
 
-app.get('/getting-started', (req, res) => {
-  res.render('pages/getting-started')
-})
+app.get('/getting-started', (req, res) => res.render('pages/getting-started'))
+app.get('/docs', (req, res) => res.render('pages/docs'))
 
-app.get(/\/docs\/.+?/, (req, res) => {
-  res.render('pages/index')
-})
+// app.get(/\/docs\/.+?/, (req, res) => {
+//   res.render('pages/index')
+// })
 
 app.listen(3000, () => console.log('Server started on port 3000'))
