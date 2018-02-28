@@ -2,6 +2,7 @@ const express = require('express')
 const compression = require('compression')
 const sassMiddleware = require('node-sass-middleware')
 const tsm = require('ts-middleware')
+// const tsm = require('./middleware/typescript')
 const jsbeautify = require('js-beautify').js_beautify
 const path = require('path')
 
@@ -10,7 +11,7 @@ const app = express()
 app.locals.basedir = path.join(__dirname, '../resources/views')
 app.use((req, res, next) => {
   res.locals.path = req.path
-  res.locals.hpsrc = req.host.match(/localhost/) ? '//localhost:3030/horsepower/hp.min.js' : 'https://cdn.horsepowerjs.com/latest/hp.min.js'
+  res.locals.hpsrc = req.hostname.match(/localhost|127\.0\.0\.1/) ? '//localhost:3030/horsepower/hp.min.js' : 'https://cdn.horsepowerjs.com/latest/hp.min.js'
   res.locals.format = jsbeautify
 
   next()

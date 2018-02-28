@@ -24,7 +24,7 @@ class copyToClipBoard extends hp.link {
     this.find(target, item => {
       let range = document.createRange()
       let selection = window.getSelection()
-      range.selectNodeContents(item)
+      range.selectNodeContents(item.element)
       selection.removeAllRanges()
       selection.addRange(range)
       let success = document.execCommand('copy')
