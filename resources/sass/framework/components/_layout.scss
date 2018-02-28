@@ -5,7 +5,7 @@
 
 .pure-container {
   display: flex;
-  width: 65vw;
+  width: $container-width;
   margin: auto;
   flex-direction: row;
   position: relative;

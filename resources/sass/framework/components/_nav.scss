@@ -1,29 +1,64 @@
 .pure-nav {
+  position: relative;
+
+  &.pure-nav--fixed {
+    & > ul {
+      position: sticky;
+      top: 0;
+    }
+  }
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+    position: relative;
 
-    & > li {
+    li {
+      &.pure-nav--active {
+        & > a {
+          svg {
+            transform: rotate(90deg);
+          }
+        }
+
+        & > ul {
+          display: block;
+        }
+      }
+
+      & > ul {
+        display: none;
+      }
+
       & > a {
         &:hover {
           background-color: $light-gray;
         }
-        display: block;
-        padding: 0.5rem;
-      }
+        display: flex;
+        padding: 0.3rem;
+        font-weight: 500;
+        flex-direction: row;
 
-      ul > li {
-        font-size: 0.9em;
-
-        & > a {
-          padding: 0.2em;
-          padding-left: 2em;
+        svg {
+          transition: transform 0.2s ease-in-out;
         }
 
-        ul > li {
+        :last-child {
+          margin-left: auto;
+        }
+      }
+
+      ul {
+        & > li {
+          padding-left: 1em;
+
           & > a {
-            padding-left: 4em;
+            font-weight: 300;
           }
         }
       }

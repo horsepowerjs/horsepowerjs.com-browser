@@ -1,125 +1,149 @@
 extends /main
+
+mixin item(title, text, code)
+  a(name=`${title}`)
+  h3(name=`${title}`)= title
+  .pure-block
+    p!= text
+    if code
+      pre: code.language-javascript!= format(code, { indent_size: 2 })
+
+mixin navItem(title)
+  li: a(href=`#${title}`)= title
+
 block content
   .pure-section.white
     .pure-container
       .pure-row.pure-padding--0px
-        .pure-nav.pure-col.pure-col--2
+        .pure-nav.pure-nav--fixed.pure-col.pure-col--2
           ul
             li
-              a() Tutorial
+              a() Tutorial #[span #[i.far.fa-angle-right]]
             li
-              a() Fundamentals
+              a() Fundamentals #[span #[i.far.fa-angle-right]]
               ul
                 li
-                  a() Messages
+                  a() Messages #[span #[i.far.fa-angle-right]]
                   ul
-                    li: a() ajaxResponse
-                    li: a() childAdded
-                    li: a() childChanged
-                    li: a() childRemoved
-                    li: a() clicked
-                    li: a() created
-                    li: a() deleted
-                    li: a() doubleClicked
-                    li: a() heldDown
-                    li: a() keydown
-                    li: a() keyup
-                    li: a() loop
-                    li: a() modified
-                    li: a() removed
-                    li: a() onBinding
-                    li: a() onBinding*
-                    li: a() onScope
-                    li: a() onScope*
-                    li: a() tick
-                    li: a() updated
+                    +navItem('ajaxResponse')
+                    +navItem('childAdded')
+                    +navItem('childChanged')
+                    +navItem('childRemoved')
+                    +navItem('clicked')
+                    +navItem('created')
+                    +navItem('doubleClicked')
+                    +navItem('keydown')
+                    +navItem('keyup')
+                    +navItem('loop')
+                    +navItem('modified')
+                    +navItem('mouseHeldDown')
+                    +navItem('removed')
+                    +navItem('onBinding')
+                    +navItem('onBinding*')
+                    +navItem('onScope')
+                    +navItem('onScope*')
+                    +navItem('tick')
+                    +navItem('updated')
                 li: a() Components
                 li: a() Scopes
-            li: a() Techniques
+            li: a() Techniques #[span #[i.far.fa-angle-right]]
         .pure-col.pure-col--10
           h2 Messages
           p.pure-block Messages are the primary focus of Horsepower, they are what make your components do what they do.
-          h3 ajaxResponse
-          .pure-block
-            p Called when there is a response from an ajax request that was made by #[code this.ajax.get] or #[code this.ajax.post]
-            pre: code.language-javascript.
-              class example extends hp.element {
-                created() {
-                  this.ajax.get('/myfile.json')
-                }
-                ajaxResponse(data) {
-                  console.log(data)
+
+          +item('ajaxResponse', 'Called when there is a response from an ajax request that was made by <code>this.ajax.get</code> or <code> this.ajax.post</code>', `
+            class example extends hp.element {
+              created() {
+                this.ajax.get('/myfile.json')
+              }
+              ajaxResponse(data) {
+                console.log(data)
+              }
+            }`)
+
+          +item('childAdded','Called when a child element gets added. The child may or not be a direct child of the element.',`
+            class example extends hp.element {
+              childAdded(element) {
+                if(!hp.hasComponents(element)){
+                  hp.createComponent(element, otherComponent)
                 }
               }
+            }`)
 
-          h3 childAdded
-          .pure-block
-            p Called when a child element gets added. The child may or not be a direct child of the element.
-            pre: code.language-javascript.
-              class example extends hp.element {
-                childAdded(element) {
-                  if(!hp.hasComponents(element)){
-                    hp.createComponent(element, otherComponent)
-                  }
-                }
-              }
-
-          h3 childChanged
-          .pure-block
-            p Called when a children elements gets added/removed.
-            pre: code.language-javascript.
+          +item('childChanged','Called when a children elements gets added/removed.',`
               class example extends hp.element {
                 childChanged(element) {
 
                 }
-              }
+              }`)
 
-          h3 childRemoved
-          .pure-block
-            p Called when a children elements get removed.
-            pre: code.language-javascript.
+          +item('childRemoved','Called when a children elements get removed.',`
               class example extends hp.element {
                 childRemoved(element) {
 
                 }
-              }
+              }`)
 
-          h3 clicked
-          .pure-block
-            p Called when the element is clicked.
-            pre: code.language-javascript.
+          +item('clicked','Called when the element is clicked.',`
               class example extends hp.element {
                 clicked() {
                   this.toggleClass('red-background')
                 }
-              }
+              }`)
 
-          h3 created
-          .pure-block
-            p Called when the component gets created. This is only called once per component, and is a good place to initialize properties and/or scope values.
-            pre: code.language-javascript.
+          +item('created','Called when the component gets created. This is only called once per component, and is a good place to ',`initialize properties and/or scope values.re: code.language-javascript.
               class example extends hp.element {
                 created() {
                   this.number = Math.random()
                 }
-              }
+              }`)
 
-          h3 deleted
-          .pure-block
-            p Called when the component gets deleted. This is only called once per component, and is a good place to cleanup anything that needs house keeping.
-            pre: code.language-javascript.
-              class example extends hp.element {
-                deleted() {
-                  this.rootScope.items = []
-                }
-              }
-
-          h3 doubleClicked
-          .pure-block
-            p Called when the element was double clicked.
-            pre: code.language-javascript.
+          +item('doubleClicked','Called when the element was double clicked.',`
               class example extends hp.element {
                 doubleClicked() {
                   this.toggleClass('blue-background')
                 }
-              }
+              }`)
+
+          +item('keydown','Called when the mouse button has been held down for 500ms.',`
+              class example extends hp.element {
+                keydown(keyboard) {
+                  keyboard.block(/d/)
+                }
+              }`)
+
+          +item('keyup','Called when the mouse button has been held down for 500ms.',`
+              class example extends hp.element {
+                keyup(keyboard) {
+                  console.log(keyboard.key)
+                }
+              }`)
+
+          +item('loop','Runs a loop until a number is not returned. The returned number is when the next loop call will be called in seconds.',`
+              class example extends hp.element {
+                loop(keyboard) {
+                  this.appendElement('div', 'Hello')
+                  return 0.5
+                }
+              }`)
+
+          +item('modified','Called when the element attributes have been modified.',`
+              class example extends hp.element {
+                modified(newValue, oldValue, attribute) {
+                  console.log(newValue, oldValue, attribute)
+                }
+              }`)
+
+          +item('mouseHeldDown','Called when the mouse button has been held down for 500ms.',`
+              class example extends hp.element {
+                mouseHeldDown(mouse) {
+                  this.findElements('input[type=text]', item => this.value(''))
+                }
+              }`)
+
+          +item('removed','Called when the component has been destoryed. This is also called when the element itself gets destroyed and the component is attached to it since the component gets destroyed along with the element.',`
+              class example extends hp.element {
+                mouseHeldDown(mouse) {
+                  this.findElements('input[type=text]', item => this.value(''))
+                }
+              }`)

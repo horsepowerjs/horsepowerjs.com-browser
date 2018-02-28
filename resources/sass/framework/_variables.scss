@@ -31,6 +31,7 @@ $breakpoint-phone: 500px !default;
 $grid-columns: 12 !default;
 $grid-padding: 8px !default;
 $cell-margin: 8px !default;
+$container-width: 65vw !default;
 
 ////////////////////////////////////////////////////////////////////////////////
 /// Card default values
@@ -41,3 +42,6 @@ $card-padding: 10px !default;
 /// Misc
 ////////////////////////////////////////////////////////////////////////////////
 $box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+$box-shadow-right: 0 0 2px 0 rgba(0, 0, 0, 0.2), 2px 0 2px 2px rgba(0, 0, 0, 0.2);
+$box-shadow-left: 0 0 2px 0 rgba(0, 0, 0, 0.2), -2px 0 2px 2px rgba(0, 0, 0, 0.2);
+$box-shadow-top: 0 0 2px 0 rgba(0, 0, 0, 0.2), 0 -2px 2px 2px rgba(0, 0, 0, 0.2);
