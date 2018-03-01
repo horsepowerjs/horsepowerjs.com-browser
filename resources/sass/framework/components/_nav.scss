@@ -18,6 +18,16 @@
     flex: 1;
     position: relative;
 
+    ul {
+      & > li {
+        padding-left: 1em;
+
+        & > a {
+          font-weight: 300;
+        }
+      }
+    }
+
     li {
       &.pure-nav--active {
         & > a {
@@ -50,16 +60,6 @@
 
         :last-child {
           margin-left: auto;
-        }
-      }
-
-      ul {
-        & > li {
-          padding-left: 1em;
-
-          & > a {
-            font-weight: 300;
-          }
         }
       }
     }

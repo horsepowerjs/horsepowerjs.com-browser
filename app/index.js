@@ -41,7 +41,12 @@ app.get('/', (req, res) => {
 
 app.get('/getting-started', (req, res) => res.render('pages/getting-started'))
 app.get('/docs', (req, res) => res.render('pages/docs'))
-// app.get('/docs/nav', (req, res) => res.render('pages/docs'))
+app.get('/templates/:item/:file', (req, res) => {
+  res.sendFile(path.join(__dirname, '../resources/templates', req.params.item, req.params.file + '.html'))
+})
+app.get('/data/:item/:file', (req, res) => {
+  res.sendFile(path.join(__dirname, '../resources/data', req.params.item, req.params.file + '.json'))
+})
 
 // app.get(/\/docs\/.+?/, (req, res) => {
 //   res.render('pages/index')

@@ -1,0 +1,15 @@
+{
+  "title": "Messages",
+  "title-message": "Messages are the primary focus of Horsepower, they are what make your components do what they do.",
+  "docs": [
+    {
+      "title": "ajaxResponse",
+      "message": "Called when there is a response from an ajax request that was made by <code>this.ajax.get</code> or <code> this.ajax.post</code>",
+      "js": "class example extends hp.element {\n  created() {\n    this.ajax.get('/myfile.json')\n  }\n  ajaxResponse(data) {\n    console.log(data)\n  }\n}"
+    },
+    {
+      "title": "childAdded",
+      "message": "Called when a child element gets added. The child may or not be a direct child of the element."
+    }
+  ]
+}
