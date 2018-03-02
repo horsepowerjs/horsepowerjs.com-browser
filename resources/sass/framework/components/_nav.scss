@@ -2,9 +2,29 @@
   position: relative;
 
   &.pure-nav--fixed {
-    & > ul {
-      position: sticky;
-      top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: sticky;
+    top: 0;
+
+    /* width */
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      /* Handle on hover */
+      &:hover {
+        background: #555;
+      }
     }
   }
 

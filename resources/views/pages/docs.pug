@@ -10,11 +10,11 @@ mixin item(title, text)
         block
 
 mixin navItem(title)
-  li: a(href=`#${title}`)&attributes(attributes)= title
+  li: a(href=`#${title}`).nav-item&attributes(attributes)= title
 
 mixin navGroup(title)
   li
-    a()= title
+    a().nav-group= title
       span
         i.far.fa-angle-right
     if block
@@ -26,12 +26,24 @@ block content
   .pure-section.white
     .pure-container
       .pure-row.pure-padding--0px
-        .pure-nav.pure-nav--fixed.pure-col.pure-col--2
+        .pure-nav.pure-nav--fixed.pure-col.pure-col--3
           ul
             +navGroup('Tutorial')
             +navGroup('Fundamentals')
               +navGroup('Messages')
-                +navGroup('Components')
+                +navGroup('Form Items')
+                  +navItem('enabled')
+                  +navItem('disabled')
+                  +navGroup('Checkbox')
+                    +navItem('toggled')
+                  +navGroup('Text')
+                    +navItem('accpet')
+                    +navItem('reject')
+                    +navItem('inputDelay')
+                  +navGroup('Button')
+                    +navItem('accpet')
+                    +navItem('reject')
+                +navGroup('All')
                   +navItem('ajaxResponse')
                   +navItem('childAdded')
                   +navItem('childChanged')
@@ -67,7 +79,7 @@ block content
                 +navItem('Templates')(data-page="123")
                 +navGroup('Web Sockets')
             +navGroup('Techniques')
-        .pure-col.pure-col--10.doc
+        .pure-col.pure-col--9.doc
         //- .pure-col.pure-col--10
           h2 Messages
           p.pure-block Messages are the primary focus of Horsepower, they are what make your components do what they do.

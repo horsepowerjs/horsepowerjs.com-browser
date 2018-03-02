@@ -157,64 +157,19 @@ main {
     }
   }
 }
-// }
-
-// .card.about {
-//   .columns {
-//     .column {
-//       display: flex;
-//       flex-direction: column;
-//       justify-content: center;
-
-//       &:nth-child(2) {
-//         text-align: center;
-//       }
-
-//       &:nth-child(3) {
-//         text-align: right;
-
-//         a {
-//           display: flex;
-//           flex-direction: row;
-//           justify-content: flex-end;
-//           align-items: center;
-//           color: #4a4a4a;
-
-//           :first-child {
-//             margin-right: 1rem;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-// .navbar {
-//   background: transparent;
-//   position: absolute;
-//   width: 100%;
-//   z-index: 1000;
-
-//   a.navbar-link,
-//   a.navbar-item {
-//     color: #ffffff;
-//     letter-spacing: 1px;
-//     text-transform: uppercase;
-
-//     &:hover {
-//       color: #bed6eb;
-//       background: transparent;
-//     }
-//   }
-
-//   .navbar-brand {
-//     img {
-//       height: 50px;
-//     }
-//   }
-// }
 
 footer {
   background: #495057;
   color: #ffffff;
+}
+
+.pure-nav {
+  a {
+    color: #4a4a4a;
+
+    &.selected {
+      color: #e91e63;
+      font-weight: bold;
+    }
+  }
 }
