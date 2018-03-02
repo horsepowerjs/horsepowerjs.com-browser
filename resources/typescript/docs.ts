@@ -18,11 +18,16 @@ namespace hpweb {
         data: '/data/docs/messages'
       }
     }
-    public postRender() {
-      Prism.highlightAll()
+  }
+
+  class beautify extends hp.element {
+    public created() {
+      this.text = js_beautify(this.text, { indent_size: 2 })
+      Prism.highlightElement(this.element)
     }
   }
 
   hp.observe('.pure-nav > ul li > a', navListLink)
+  hp.observe('code.language-javascript', beautify)
   hp.observe('.doc', doc)
 }

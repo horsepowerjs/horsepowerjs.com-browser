@@ -10,7 +10,7 @@ mixin item(title, text)
         block
 
 mixin navItem(title)
-  li: a(href=`#${title}`)= title
+  li: a(href=`#${title}`)&attributes(attributes)= title
 
 mixin navGroup(title)
   li
@@ -22,6 +22,7 @@ mixin navGroup(title)
         block
 
 block content
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify.js")
   .pure-section.white
     .pure-container
       .pure-row.pure-padding--0px
@@ -30,25 +31,30 @@ block content
             +navGroup('Tutorial')
             +navGroup('Fundamentals')
               +navGroup('Messages')
-                +navItem('ajaxResponse')
-                +navItem('childAdded')
-                +navItem('childChanged')
-                +navItem('childRemoved')
-                +navItem('clicked')
-                +navItem('created')
-                +navItem('doubleClicked')
-                +navItem('keydown')
-                +navItem('keyup')
-                +navItem('loop')
-                +navItem('modified')
-                +navItem('mouseHeldDown')
-                +navItem('removed')
-                +navItem('onBinding')
-                +navItem('onBinding*')
-                +navItem('onScope')
-                +navItem('onScope*')
-                +navItem('tick')
-                +navItem('updated')
+                +navGroup('Components')
+                  +navItem('ajaxResponse')
+                  +navItem('childAdded')
+                  +navItem('childChanged')
+                  +navItem('childRemoved')
+                  +navItem('clicked')
+                  +navItem('created')
+                  +navItem('doubleClicked')
+                  +navItem('keydown')
+                  +navItem('keyup')
+                  +navItem('loop')
+                  +navItem('static loop')
+                  +navItem('modified')
+                  +navItem('mouseHeldDown')
+                  +navItem('removed')
+                  +navItem('onBinding')
+                  +navItem('onBinding*')
+                  +navItem('onScope')
+                  +navItem('onScope*')
+                  +navItem('tick')
+                  +navItem('updated')
+                +navGroup('Templates')
+                  +navItem('preRender')
+                  +navItem('postRender')
               +navGroup('Components')
                 +navGroup('DOM')
                   +navItem('Element')
@@ -58,6 +64,7 @@ block content
                     +navItem('Input')
                   +navItem('FormItem')
                   +navItem('Link')
+                +navItem('Templates')(data-page="123")
                 +navGroup('Web Sockets')
             +navGroup('Techniques')
         .pure-col.pure-col--10.doc
@@ -107,7 +114,7 @@ block content
                 clicked() {
                   this.toggleClass('red-background')
                 }
-              }`)
+              }
 
           +item('created','Called when the component gets created. This is only called once per component, and is a good place to initialize properties and/or scope values.')
             code.language-javascript.
