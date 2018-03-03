@@ -8,7 +8,7 @@ html
     //- Include the JavaScript libraries
     script(src=`${hpsrc}`)
     script(src='/js/fontawesome-all.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js')
+    script(async, src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js')
     script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
     script.
       (adsbygoogle = window.adsbygoogle || []).push({
@@ -16,12 +16,11 @@ html
             enable_page_level_ads: true
       });
     //- Include the css
-    //- link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css")
-    link(rel="stylesheet", href="/css/pure.css")
-    link(rel="stylesheet", href="/css/main.css")
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism.min.css")
+    link(async, rel="stylesheet", href="/css/pure.css")
+    link(async, rel="stylesheet", href="/css/main.css")
+    link(async, rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism.min.css")
     //- Include the website JavaScript
-    script(src="/js/main.js")
+    script(src="/js/main.js" async)
   if path == '/'
     body.white
   else
