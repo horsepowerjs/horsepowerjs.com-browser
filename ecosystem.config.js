@@ -7,6 +7,8 @@ module.exports = {
     {
       name: 'Horsepowerjs.com',
       script: 'app/index.js',
+      instances: 'max',
+      exec_mode: "cluster",
       watch: ['app']
     }
   ]

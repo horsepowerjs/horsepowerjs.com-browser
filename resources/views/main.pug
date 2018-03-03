@@ -7,7 +7,7 @@ html
     title Horsepower
     //- Include the JavaScript libraries
     script(src=`${hpsrc}`)
-    script(src='/js/fontawesome-all.min.js')
+    script(async, src='/js/fontawesome-all.min.js')
     script(async, src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js')
     script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
     script.
@@ -20,7 +20,7 @@ html
     link(async, rel="stylesheet", href="/css/main.css")
     link(async, rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism.min.css")
     //- Include the website JavaScript
-    script(src="/js/main.js" async)
+    script(src="/js/main.js")
   if path == '/'
     body.white
   else
