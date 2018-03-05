@@ -20,5 +20,25 @@ block content
           h2.title.white-text #[a.copy.white-text(data-target='#copy-npm' data-tooltip='Copy code') #[i.fas.fa-clipboard]] NPM
           pre#copy-npm= 'npm install horsepower --save'
   section.pure-section.white
-    .container
+    .pure-container.pure-container--vertical.pure-padding-top--5rem.pure-padding-bottom--5rem
       h1.is-size-1 Usage
+      div: p.pure-block Basic HTML setup requires that you include the library first, then include the javascript for the page afterwards.
+      pre: code.language-html
+        = '<!doctype html>'
+        = '<html>'
+        = '<head>'
+        = '<script src="https://cdn.horsepowerjs.com/latest/hp.min.js"></script>'
+        = '<script src="/app.js"></script>'
+        = '</head>'
+        = '<body>'
+        = '<p></p>'
+        = '</body>'
+        = '</html>'
+      div: p.pure-block Here in the javascript file #[code app.js] we then create a class, and use it to observe the page for changes. Once the #[code p] tag has been observed horsepower will begin to send #[code messages] to it if the messages are implmented.
+      pre: code.language-javascript
+        = 'class paragraph extends hp.element {'
+        = '  created() {'
+        = '    this.text = \'Hello World\''
+        = '  }'
+        = '}'
+        = 'hp.observe(\'p\', paragraph)'

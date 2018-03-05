@@ -1,10 +1,25 @@
 namespace hpweb {
   class navListLink extends hp.link {
+    public created() {
+      let path = this.getAttribute('data-href'), urlPath = hp.url.path
+      if (path == urlPath && this.hasClass('nav-group')) {
+        this.broadcastTo(navListLink, 'unbold')
+        // make the item and its upstream nav-group bold
+        this.upstream('a.nav-group', item => {
+          item.addClass('selected')
+          item.parentElement(parent => {
+            parent.addClass('pure-nav--active')
+          })
+        })
+      }
+    }
     public clicked() {
       // Toggle the activity on the parent li item
       this.parentElement(item => {
-        item.toggleClass('pure-nav--active')
         item.findChildElements('.pure-nav--active', item => item.removeClass('pure-nav--active'))
+        // if (this.hasClass('nav-group')) {
+        item.toggleClass('pure-nav--active')
+        // }
       })
 
       // unbold all links
@@ -12,13 +27,19 @@ namespace hpweb {
       // make the item and its upstream nav-group bold
       this.upstream('a.nav-group', item => {
         item.parentElement(parent => {
-          if (parent.hasClass('pure-nav--active')) {
-            item.addClass('selected')
-          }
+          if (parent.hasClass('pure-nav--active')) item.addClass('selected')
         })
       })
+
+      this.parentElement(parent => {
+        if (parent.hasClass('pure-nav--active') || parent.parent == null) {
+          let tpl = this.getAttribute('data-tpl')
+          tpl != '' && this.broadcastTo(doc, 'couple', tpl)
+        }
+      })
+      hp.url.set(this.getAttribute('data-href'))
       if (this.hash.length > 0) {
-        window.location.href = this.hash
+        hp.url.goto(this.hash)
       }
     }
     public unbold() {
@@ -28,21 +49,25 @@ namespace hpweb {
 
   class doc extends hp.template {
     public bind() {
+      let path = hp.url.path.split('/')
+      let url = '/home'
+      if (path.indexOf('docs') === 1 && path.length > 2) {
+        path.splice(1, 1)
+        url = path.join('/')
+      }
       return {
-        template: '/templates/docs/messages',
-        data: '/data/docs/messages'
+        templateUrl: '/templates/docs' + url,
+        dataUrl: '/data/docs' + url
       }
     }
-  }
-
-  class beautify extends hp.element {
-    public created() {
-      this.text = js_beautify(this.text, { indent_size: 2 })
-      Prism.highlightElement(this.element)
+    public couple(page: string) {
+      this.reCouple({
+        templateUrl: '/templates/docs' + page,
+        dataUrl: '/data/docs' + page
+      })
     }
   }
 
   hp.observe('.pure-nav  a', navListLink)
-  hp.observe('code.language-javascript', beautify)
   hp.observe('.doc', doc)
 }

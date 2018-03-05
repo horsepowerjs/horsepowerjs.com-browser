@@ -2,11 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const glob = require("glob");
-const cp = require("child_process");
 const path = require("path");
+const ts = require("typescript");
+const escape = require("escape-string-regexp");
 const uglify = require('uglify-es');
+// declare var tsm: tsMiddleware
+// declare module 'ts-middleware' {
+//   export = tsm
+// }
 module.exports = function (options) {
-  return function (req, res, next) {
+  return async function (req, res, next) {
     if (path.parse(req.path).ext.match(/(\.min)?\.js$/)) {
       let projects = [];
       if (typeof options == 'string') {
@@ -17,11 +22,12 @@ module.exports = function (options) {
         options.project && typeof options.project != 'string' && projects.push(options.project);
         options.project && typeof options.project == 'string' && projects.push({ config: options.project });
       }
-      projects.forEach(async (project) => {
-        let tsc = typeof options == 'string' ? undefined : options.tsc;
+      let p = [];
+      projects.forEach(project => {
         // TODO: Only compile files or files from projects that were requested
-        await compileProject(project, tsc);
+        p.push(compileProject(project, req.path));
       });
+      await Promise.all(p);
     }
     next();
   };
@@ -49,25 +55,37 @@ async function minify(project) {
     return resolve(false);
   });
 }
-async function compileProject(project, tscPath) {
+async function compileProject(project, reqPath) {
   let cfgDir = path.parse(project.config).dir;
-  let cfg = JSON.parse(fs.readFileSync(project.config).toString());
-  let check = cfg.compilerOptions.outDir || cfg.compilerOptions.outFile || null;
-  let tsDate = await getMtime(cfgDir, 'ts');
-  let jsDate = await getMtime(path.resolve(cfgDir, check), 'js');
-  if (!jsDate || (tsDate && jsDate && tsDate > jsDate)) {
-    try {
-      cp.execSync(`${getTscPath(tscPath)} -p "${project.config}"`);
-      if (project.shouldUglify !== false) {
-        await minify(project);
+  let cfg = JSON.parse(fs.readFileSync(project.config).toString()).compilerOptions;
+  let outFile = path.resolve(path.parse(project.config).dir, cfg.outFile || '');
+  if (outFile.match(new RegExp(`${escape(reqPath)}$`))) {
+    let check = cfg.outDir || cfg.outFile || '';
+    let tsDate = await getMtime(cfgDir, 'ts');
+    let jsDate = await getMtime(path.resolve(cfgDir, check), 'js');
+    if (!jsDate || (tsDate && jsDate && tsDate > jsDate)) {
+      try {
+        let config = readConfigFile(project.config);
+        let result = ts.createProgram(config.fileNames, config.options);
+        result.emit();
+        if (project.shouldUglify !== false) {
+          await minify(project);
+        }
       }
-    }
-    catch (e) {
-      console.error(e.stdout.toString());
-      console.error(e.stderr.toString());
+      catch (e) {
+        console.error(e.stdout.toString());
+        console.error(e.stderr.toString());
+      }
     }
   }
   return;
+}
+function getFiles(outDir) {
+  return new Promise(resolve => {
+    glob(outDir + '/**/*.ts', (err, files) => {
+      resolve(files);
+    });
+  });
 }
 async function getMtime(dirPath, type) {
   return new Promise(resolve => {
@@ -94,6 +112,13 @@ async function getMtime(dirPath, type) {
     }
   });
 }
-function getTscPath(tscPath) {
-  return tscPath ? tscPath : path.join(__dirname, './node_modules/.bin/tsc');
+function readConfigFile(configFileName) {
+  // Read config file
+  const configFileText = fs.readFileSync(configFileName).toString();
+  // Parse JSON, after removing comments. Just fancier JSON.parse
+  const result = ts.parseConfigFileTextToJson(configFileName, configFileText);
+  const configObject = result.config;
+  // Extract config information
+  const configParseResult = ts.parseJsonConfigFileContent(configObject, ts.sys, path.dirname(configFileName));
+  return configParseResult;
 }

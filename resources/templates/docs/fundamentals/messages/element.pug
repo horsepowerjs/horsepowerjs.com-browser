@@ -1,0 +1,8 @@
+h2(hp-bind="title")
+p(class="pure-block" hp-bind="title-message")
+div(hp-for="item in docs")
+  a(name="{{item.title}}")
+  h3(hp-bind="item.title")
+  div(class="pure-block")
+    p(hp-bind="item.message")
+    pre: code(class="language-javascript" hp-bind="item.js")

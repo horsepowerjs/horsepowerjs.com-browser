@@ -1,0 +1,23 @@
+mixin item(title, text)
+  a(name=`${title}`)
+  h3(name=`${title}`)= title
+  .pure-block
+    p!= text
+    if block
+      pre
+        block
+
+mixin navItem(title)
+  li: a(href=`#${title}`).nav-item&attributes(attributes)= title
+
+mixin navItem2(title)
+  li: a().nav-item&attributes(attributes)= title
+
+mixin navGroup(title)
+  li
+    a().nav-group&attributes(attributes)= title
+      span
+        i.far.fa-angle-right
+    if block
+      ul
+        block

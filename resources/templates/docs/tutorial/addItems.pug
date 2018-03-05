@@ -1,0 +1,34 @@
+h2 Adding to the data
+div.pure-block
+  p Next we want to add some basic functionality to our checklist, because a basic input box and button doesn't do much for us. We will have access to the data using #[code this.data] from there depending on your data you can push to an array or add/remove/modify an object key/value. Once changed, the template will update itself automatically. You can also modify the template and again the html will adjust, however, we will only be modifying the data in the tutorial.
+h3 Add items to the data
+div.pure-block
+  p Lets first lets add some extra functionality to the #[code checklist] class we created by adding a method called #[code addItem]. This method will add items to our data that we initialized in the #[code bind] method and it will look like this:
+  pre: code.language-javascript
+    = 'addItem(value) {'
+    = '  this.data.push({id: this.id++, name: value})'
+    = '}'
+  p As you may have noticed, #[code id] and #[code name] match the values that are found in the template's for element. These two values will get bound to those bindings. Whenever we modify the data, the template will rebuild itself to match the data so you don't have to.
+h3 Accepting input data
+div.pure-block
+  p Now we need to accept input data from our input field to add it to the checklist. With the #[code accepted] message we can easily watch for when the user presses something that matches the accept key. By default the accept key is #[kbd enter].
+  pre: code.language-javascript
+    = 'class input extends hp.input {'
+    = '  created() {'
+    = '    this.focus()'
+    = '  }'
+    = '  accept(value) {'
+    = '    this.broadcastTo(checklist, \'addItem\', value)\n'
+    = '    this.value(\'\')'
+    = '  }'
+    = '}'
+    = 'hp.observe(\'input[type=text]\', input)'
+h3 What is happening?
+div.pure-block
+  ul
+    li First, when we create the component we will want to give the input focus.
+    li Next, when we accept the input data (triggered by pressing #[kbd enter]) the following will occur
+      ul
+        li We will broadcast to any element that has a #[code checklist] component attached to it and tell it to run the method #[code addItem]. We will also pass the value of the input as a parameter to that method.
+        li The #[code checklist] will then see that message and run its #[code addItem] method which pushes the value to its current template data. Once this happens the template will see changes to the data and update the template.
+        li Finally, we will clear the input to accept another item.

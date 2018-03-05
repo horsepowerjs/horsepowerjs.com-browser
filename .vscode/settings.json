@@ -1,0 +1,13 @@
+{
+  "spellright.language": "en_US",
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "pug",
+    "plaintext",
+    "jade"
+  ],
+  "cSpell.words": [
+    "horsepowerjs"
+  ]
+}

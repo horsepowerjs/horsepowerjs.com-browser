@@ -1,0 +1,18 @@
+h2 Completing Tasks
+div.pure-block
+  p Next we will want to make the check boxes operational, this means that when we check them we will want to just cross the item off, and when we un-check them un-cross them off.
+h3 Checkbox functionality
+div.pure-block
+  p We can toggle the progress of an item by creating a component attached to the checkbox. This component will just toggle a class on/off based on if the checkbox is checked or not.
+  pre: code.language-javascript
+    = 'class checkbox extends hp.checkbox {'
+    = '  toggled(status) {'
+    = '    this.closestElement(\'li\', li => li.enableClass(status, \'completed\'))'
+    = '  }'
+    = '}'
+    = 'hp.observe(\'input[type=checkbox]\', checkbox)'
+h3 What is happening?
+div.pure-block
+  ul
+    li We add a toggle which is unique to the checkbox, it gives us the status of the checkbox #[code true] for checked and #[code false] for unchecked.
+    li Since this component is attached to the checkbox, we want to find the closest #[code li] and add/remove the class #[code completed] depending on if the checkbox is checked or not.

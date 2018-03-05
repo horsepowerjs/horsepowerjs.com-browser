@@ -1,0 +1,10 @@
+extends /main
+block content
+  .pure-section.white
+    .pure-container
+      .pure-row.pure-padding--0px
+        .pure-nav.pure-nav--fixed.pure-col.pure-col--3
+          ul
+            +navItem('My Check List')(data-href='/demo/checklist' data-tpl='/home')
+        .pure-col.pure-col--9.demo
+          iframe(src='/demos/checklist/index.html')

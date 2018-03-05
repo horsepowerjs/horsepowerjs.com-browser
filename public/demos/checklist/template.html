@@ -1,0 +1,16 @@
+<h1>My Check List</h1>
+<p>
+  <input type="text" placeholder="What needs to be done?">
+</p>
+<p>
+  <input type="button" value="Remove Completed">
+</p>
+<div>
+  <ul>
+    <li hp-for="item in :data" data-id="{{item.id}}">
+      <label>
+        <input type="checkbox"> {{item.task}}
+      </label>
+    </li>
+  </ul>
+</div>

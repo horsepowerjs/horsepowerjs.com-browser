@@ -1,72 +1,61 @@
 extends /main
 
-mixin item(title, text)
-  a(name=`${title}`)
-  h3(name=`${title}`)= title
-  .pure-block
-    p!= text
-    if block
-      pre
-        block
-
-mixin navItem(title)
-  li: a(href=`#${title}`).nav-item&attributes(attributes)= title
-
-mixin navGroup(title)
-  li
-    a().nav-group= title
-      span
-        i.far.fa-angle-right
-    if block
-      ul
-        block
-
 block content
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify.js")
   .pure-section.white
     .pure-container
       .pure-row.pure-padding--0px
         .pure-nav.pure-nav--fixed.pure-col.pure-col--3
           ul
+            +navItem('About')(data-href='/docs' data-tpl='/home')
             +navGroup('Tutorial')
-            +navGroup('Fundamentals')
-              +navGroup('Messages')
-                +navGroup('Form Items')
-                  +navItem('enabled')
-                  +navItem('disabled')
-                  +navGroup('Checkbox')
-                    +navItem('toggled')
-                  +navGroup('Text')
-                    +navItem('accpet')
-                    +navItem('reject')
-                    +navItem('inputDelay')
-                  +navGroup('Button')
-                    +navItem('accpet')
-                    +navItem('reject')
-                +navGroup('All')
-                  +navItem('ajaxResponse')
-                  +navItem('childAdded')
-                  +navItem('childChanged')
-                  +navItem('childRemoved')
-                  +navItem('clicked')
-                  +navItem('created')
-                  +navItem('doubleClicked')
-                  +navItem('keydown')
-                  +navItem('keyup')
-                  +navItem('loop')
-                  +navItem('static loop')
-                  +navItem('modified')
-                  +navItem('mouseHeldDown')
-                  +navItem('removed')
-                  +navItem('onBinding')
-                  +navItem('onBinding*')
-                  +navItem('onScope')
-                  +navItem('onScope*')
-                  +navItem('tick')
-                  +navItem('updated')
+              +navItem2('1. Introduction')(data-href='/docs/tutorial/intro' data-tpl='/tutorial/intro')
+              +navItem2('2. The base project')(data-href='/docs/tutorial/base' data-tpl='/tutorial/base')
+              +navItem2('3. Adding to the data')(data-href='/docs/tutorial/addItems' data-tpl='/tutorial/addItems')
+              +navItem2('4. Completing tasks')(data-href='/docs/tutorial/completeTask' data-tpl='/tutorial/completeTask')
+              +navItem2('5. Removing completed')(data-href='/docs/tutorial/removeTask' data-tpl='/tutorial/removeTask')
+            +navGroup('Fundamentals')(data-href='/docs/fundamentals')
+              +navGroup('Messages')(data-href='/docs/fundamentals/messages')
+                +navGroup('Form Items')(data-href='/docs/fundamentals/messages/formItems')
+                  +navItem('enabled')(data-href='/docs/fundamentals/messages/formItems')
+                  +navItem('disabled')(data-href='/docs/fundamentals/messages/formItems')
+                  +navGroup('Checkbox')(data-href='/docs/fundamentals/messages/formItems/checkbox')
+                    +navItem('toggled')(data-href='/docs/fundamentals/messages/formItems/checkbox')
+                  +navGroup('Text')(data-href='/docs/fundamentals/messages/formItems/text')
+                    +navItem('accept')(data-href='/docs/fundamentals/messages/formItems/text')
+                    +navItem('reject')(data-href='/docs/fundamentals/messages/formItems/text')
+                    +navItem('inputDelay')(data-href='/docs/fundamentals/messages/formItems/text')
+                  +navGroup('Button')(data-href='/docs/fundamentals/messages/formItems/button')
+                    +navItem('accept')(data-href='/docs/fundamentals/messages/formItems/button')
+                    +navItem('reject')(data-href='/docs/fundamentals/messages/formItems/button')
+                +navGroup('Element')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('ajaxResponse')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('childAdded')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('childChanged')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('childRemoved')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('clicked')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('created')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('doubleClicked')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('keydown')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('keyup')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('modified')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('mouseHeldDown')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('removed')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('onBinding')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('onBinding*')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('onScope')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('onScope*')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('tick')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
+                  +navItem('static tick')(data-href='/docs/fundamentals/messages/element' data-tpl='/fundamentals/messages/element')
                 +navGroup('Templates')
                   +navItem('preRender')
                   +navItem('postRender')
+                +navGroup('Web Sockets')
+                  +navItem('connected')
+                  +navItem('closed')
+                  +navItem('disconected')
+                  +navItem('errored')
+                  +navItem('message')
+                  +navItem('pong')
               +navGroup('Components')
                 +navGroup('DOM')
                   +navItem('Element')
@@ -76,7 +65,7 @@ block content
                     +navItem('Input')
                   +navItem('FormItem')
                   +navItem('Link')
-                +navItem('Templates')(data-page="123")
+                +navItem('Templates')(data-tpl="123")
                 +navGroup('Web Sockets')
             +navGroup('Techniques')
         .pure-col.pure-col--9.doc

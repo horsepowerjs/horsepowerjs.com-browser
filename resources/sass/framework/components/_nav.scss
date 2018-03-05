@@ -2,10 +2,11 @@
   position: relative;
 
   &.pure-nav--fixed {
-    max-height: 100vh;
+    max-height: calc(100vh - 50px);
     overflow-y: auto;
     overflow-x: hidden;
     position: sticky;
+    height: fit-content;
     top: 0;
 
     /* width */

@@ -1,0 +1,40 @@
+h2 Removing tasks
+div.pure-block
+  p We need to be able to remove tasks that we have completed, which is why we can't leave our button without a component. This button will remove any completed tasks that match the selector #[code li.completed].
+h3 Updating the checklist class
+div.pure-block
+  p First we will want to add more functionality to our #[code checklist] class by adding another method to remove items from the data.
+  pre: code.language-javascript
+    = 'removeItem(index) {'
+    = '  let idx = this.data.findIndex(i => i.id === index)\n'
+    = '  idx > -1 && this.data.splice(idx, 1)'
+    = '}'
+  p We will be accessing this in the same way that we accessed #[code addItem] by broadcasting to this component's element with the index of the item we want to remove.
+h3 Button functionality
+div.pure-block
+  p The button component has an accepted method just like the input, in this case would could have used the #[code clicked] message, but since we are accepting we will use the #[code accepted] message instead.
+  pre: code.language-javascript
+    = 'class button extends hp.button {'
+    = '  accepted() {'
+    = '    this.findElements(\'li.completed\', li => {'
+    = '      li.broadcastTo(checklist, \'removeItem\', li.getInt(\'data-id\'))'
+    = '    })'
+    = '  }'
+    = '}'
+    = 'hp.observe(\'input[type=button]\', button)'
+h3 What is happening?
+div.pure-block
+  ul
+    li Once the button is clicked, we find all #[code li.completed] elements.
+    li We then we broadcast to the checklist calling the method #[code removeItem] and pass it an integer that was returned from what we saved in the attribute #[code data-id] (see the template).
+h3 Complete!
+div.pure-block
+  p Congratulations! You should have now successfully created the checklist tutorial with a working checklist!
+  p Your checklist should now have the following features:
+  ul
+    li An Input box to enter in tasks
+    li A list of tasks that need to be completed
+    li A button that will removed all completed tasks
+h3 Extra credit
+div.pure-block
+  p Make your checklist save and load data from #[code localStorage].

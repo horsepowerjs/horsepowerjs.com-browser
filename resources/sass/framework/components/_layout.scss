@@ -17,6 +17,7 @@
   @media screen and (max-width: $breakpoint-phone - 1) {
     & {
       width: 100vw;
+      margin-left: 0;
     }
   }
 }

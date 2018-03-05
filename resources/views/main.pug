@@ -1,3 +1,4 @@
+include /mixins
 html
   head
     meta(charset='UTF-8')
@@ -8,8 +9,13 @@ html
     //- Include the JavaScript libraries
     script(src=`${hpsrc}`)
     script(async, src='/js/fontawesome-all.min.js')
-    script(async, src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js')
     script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-html.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-css.js")
+    //- Include the website JavaScript
+    script(src="/js/main.js")
     script.
       (adsbygoogle = window.adsbygoogle || []).push({
             google_ad_client: "ca-pub-2834242581482228",
@@ -19,8 +25,6 @@ html
     link(async, rel="stylesheet", href="/css/pure.css")
     link(async, rel="stylesheet", href="/css/main.css")
     link(async, rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism.min.css")
-    //- Include the website JavaScript
-    script(src="/js/main.js")
   if path == '/'
     body.white
   else
@@ -35,7 +39,7 @@ html
           a.pure-navbar--item(href='/getting-started') Getting Started
           a.pure-navbar--item(href='/docs') Documentation
           a.pure-navbar--item Components
-          a.pure-navbar--item Examples
+          a.pure-navbar--item(href='/demo') Examples
         .pure-navbar--burger
           a: i.fal.fa-bars
   main

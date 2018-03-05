@@ -1,0 +1,107 @@
+h2 The base project
+h3 The index file
+div.pure-block
+  p To create a base for our project, we first need to make our index page. The important part to note about our index file is the #[code div], as it is the main object our template will be observing.
+  pre: code.language-html
+    = '<!doctype html>'
+    = '<html>'
+    = '  <head>'
+    = '    <title>My Check List</title>'
+    = '    <script src="https://cdn.horsepowerjs.com/latest/hp.min.js"></script>'
+    = '    <link rel="stylesheet" href="style.css">'
+    = '    <script src="app.js"></script>'
+    = '  </head>'
+    = '  <body>'
+    = '    <div id="checklist-app"></div>'
+    = '  </body>'
+    = '</html>'
+h3 The JavaScript
+div.pure-block
+  p Next we will need to create a class that extends #[code hp.template]. This will then be able to watch the data and html for any pages and update the div within the index one the fly.
+  pre: code.language-javascript
+    = 'class checklist extends hp.template {'
+    = '  bind(){'
+    = '    this.id = 0'
+    = '    return{'
+    = '      templateUrl: \'template.html\','
+    = '      data: []'
+    = '    }'
+    = '  }'
+    = '}'
+    = 'hp.observe(\'#checklist-app\', checklist)'
+h3 What is happening?
+div.pure-block
+  ul
+    li First we extend template. This gives us the ability for this item to have a template that changes whenever we modify data, or the template itself.
+    li Next we create the bind message. This is required in all templates, as it initializes the template.
+      ul
+        li We first create an #[code id] that we use to identify each item added to the list.
+        li We are loading the template from a url, so upon initialization horsepower will make an ajax request for the file and save it to the template.
+        li We are not going to load data from a remote location, so we will just initialize an empty object.
+    li Finally, We observe anything with an id of #[code checklist-app]
+h3 The template file
+div.pure-block
+  p We need to create a template #[code /templates/base.html] this is what the horsepower templating tool will use to bind the data to.
+  pre: code.language-html
+    = '<h1>My Check List</h1>'
+    = '<p><input type="text" placeholder="What needs to be done?"></p>'
+    = '<p><input type="button" value="Remove Completed"></p>'
+    = '<div>'
+    = '  <ul>'
+    = '    <li hp-for="item in :data" data-id="\\{\\{item.id\\}\\}">\n'
+    = '      <label><input type="checkbox"> \\{\\{item.task\\}\\}</label>\n'
+    = '    </li>'
+    = '  </ul>'
+    = '</div>'
+h3 The styles
+div.pure-block
+  p A webpage wouldn't be complete without some styles, so here are the style for our project.
+  pre: code.language-css
+    = '* {'
+    = '  outline: none;'
+    = '  box-sizing: border-box;'
+    = '}'
+    = 'body {'
+    = '  font-family: Arial, Helvetica, sans-serif;'
+    = '  padding: 0;'
+    = '  margin: 0;'
+    = '}'
+    = 'input[type=checkbox] {'
+    = '  display: none;'
+    = '}'
+    = 'input[type=text] {'
+    = '  padding: 5px;'
+    = '  font-size: 1.5rem;'
+    = '  display: block;'
+    = '  width: 100%;'
+    = '}'
+    = 'input[type=button] {'
+    = '  border: 0;'
+    = '  background-color: rgb(62, 136, 247);'
+    = '  color: #ffffff;'
+    = '  padding: 5px 10px;'
+    = '  font-size: 2rem;'
+    = '  display: block;'
+    = '  width: 100%;'
+    = '}'
+    = 'ul {'
+    = '  list-style: none;'
+    = '  padding: 0;'
+    = '  margin: 0;'
+    = '}'
+    = 'label {'
+    = '  display: block;'
+    = '  padding: 10px;'
+    = '  cursor: pointer;'
+    = '  font-size: 2rem;'
+    = '}'
+    = 'label:hover {'
+    = '  background-color: #eee;'
+    = '}'
+    = 'li.completed label {'
+    = '  text-decoration: line-through;'
+    = '  background-color: rgba(0, 255, 0, 0.2);'
+    = '}'
+    = 'li:not(:last-child) > label {'
+    = '  border-bottom: solid 1px #ccc;'
+    = '}'
