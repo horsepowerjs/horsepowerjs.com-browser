@@ -67,7 +67,10 @@ namespace hpweb {
       })
     }
     public postRender() {
-      ga('send', 'pageview', window.location.pathname);
+      let tracker = ga.getAll()[0]
+      if (tracker) {
+        tracker.send('pageview', window.location.pathname)
+      }
       // console.log(adsbygoogle)
       // googletag.pubads().refresh()
     }

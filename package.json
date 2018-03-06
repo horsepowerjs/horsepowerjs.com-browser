@@ -13,6 +13,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "@types/google.analytics": "0.0.38",
     "@types/js-beautify": "0.0.31",
     "@types/prismjs": "^1.9.0",
     "@types/pug": "^2.0.4",
@@ -22,7 +23,7 @@
     "js-beautify": "^1.7.5",
     "node-sass": "^4.7.2",
     "node-sass-middleware": "^0.11.0",
-    "pug": "^2.0.0-rc.4",
+    "pug": "^2.0.0",
     "ts-middleware": "^1.0.6"
   },
   "devDependencies": {
