@@ -67,6 +67,7 @@ namespace hpweb {
       })
     }
     public postRender() {
+      ga('send', 'pageview', window.location.pathname);
       // console.log(adsbygoogle)
       // googletag.pubads().refresh()
     }
