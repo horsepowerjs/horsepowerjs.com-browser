@@ -66,6 +66,10 @@ namespace hpweb {
         dataUrl: '/data/docs' + page
       })
     }
+    public postRender() {
+      // console.log(adsbygoogle)
+      // googletag.pubads().refresh()
+    }
   }
 
   hp.observe('.pure-nav  a', navListLink)

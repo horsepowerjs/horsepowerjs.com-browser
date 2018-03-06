@@ -51,8 +51,16 @@ div.pure-block
     = '    <li hp-for="item in :data" data-id="\\{\\{item.id\\}\\}">\n'
     = '      <label><input type="checkbox"> \\{\\{item.task\\}\\}</label>\n'
     = '    </li>'
+    = '    <li hp-for-else=":data"><label>No tasks yet</label></li>'
     = '  </ul>'
     = '</div>'
+  p There are four things you should note in this template.
+  ul
+    li First thing is the #[code hp-for] this will tell us that the current element will repeat and is associated with an array or object
+      ul
+        li #[code item in :data] tells us that we will use a reference for each item as and it will be called #[code item]. We also say to use the root of the data, and not an array within data which is what #[code :data] tells the interpreter.
+    li Next there are two items within double braces #[code \{\{\}\}]: #[code item.id] and #[code item.task]. Both of these reference the key within the array of objects which will be formatted like so: #[code { id: 1, task: 'My Task' }]
+    li Lastly, there is the #[code hp-for-else] which will only display if the array #[code :data] is empty.
 h3 The styles
 div.pure-block
   p A webpage wouldn't be complete without some styles, so here are the style for our project.

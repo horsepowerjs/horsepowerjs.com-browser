@@ -17,7 +17,7 @@ class checklist extends hp.template {
 }
 hp.observe('#checklist-app', checklist)
 
-class input extends hp.input {
+class input extends hp.text {
   created() {
     this.focus()
   }
