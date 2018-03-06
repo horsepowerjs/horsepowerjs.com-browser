@@ -4,33 +4,38 @@ html
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
-    link(rel="icon" href="/images/logo2.svg")
+    link(rel='icon' href='/images/logo2.svg')
     title Horsepower
     //- Include the JavaScript libraries
     script(src=`${hpsrc}`)
     script(async, src='/js/fontawesome-all.min.js')
-    script(async, src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+    //- Global site tag (gtag.js) - Google Analytics
+    script(async src='https://www.googletagmanager.com/gtag/js?id=UA-115212476-1')
+    script(async, src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js')
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify.js")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-html.js")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-css.js")
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-html.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-css.js')
     script.
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-2834242581482228",
-        enable_page_level_ads: true
-      })
+      //- Google Ads
+      (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: 'ca-pub-2834242581482228', enable_page_level_ads: true })
+      //- Google Analytics
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-115212476-1');
     //- Include the website JavaScript
-    script(src="/js/main.js")
+    script(src='/js/main.js')
     //- Include the css
-    link(async, rel="stylesheet", href="/css/pure.css")
-    link(async, rel="stylesheet", href="/css/main.css")
-    link(async, rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism.min.css")
+    link(async, rel='stylesheet', href='/css/pure.css')
+    link(async, rel='stylesheet', href='/css/main.css')
+    link(async, rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism.min.css')
   body(class=`${path == '/' ? 'white' : 'blue-header '}`)
     header(class=`${path == '/' ? '' : 'pure-depth--raised'}`)
       nav.pure-container
         .pure-navbar
           .pure-navbar--brand
-            a(href="/"): img(src="/images/logo2.svg", alt="Horsepower Logo")
+            a(href='/'): img(src='/images/logo2.svg', alt='Horsepower Logo')
           .pure-navbar--menu
             a.pure-navbar--item(href='/getting-started') Getting Started
             a.pure-navbar--item(href='/docs') Documentation
